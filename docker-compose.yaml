@@ -1,0 +1,13 @@
+version: '3'
+
+services:
+
+    db:
+        image: 'postgres'
+        container_name: 'dbpostgres'
+        ports:
+            - 5432:5432
+        environment:
+            - 'POSTGRES_DB=dbpostgres'
+            - 'POSTGRES_USER=admin'
+            - 'POSTGRES_PASSWORD=postgres'
