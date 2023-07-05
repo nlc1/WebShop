@@ -1,4 +1,4 @@
-package com.example.demo.integration;
+package com.example.shop.integration;
 
 import com.example.shop.dto.CategoryDto;
 import lombok.extern.log4j.Log4j2;

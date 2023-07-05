@@ -1,39 +1,42 @@
-package com.example.demo.unit.service;
+package com.example.shop.unit.controller;
 
+import com.example.shop.controller.CategoryController;
+import com.example.shop.controller.ProductController;
 import com.example.shop.entity.Category;
 import com.example.shop.entity.Product;
-import com.example.shop.repository.CategoryRepository;
-import com.example.shop.repository.ProductRepository;
 import com.example.shop.service.CategoryService;
 import com.example.shop.service.ProductService;
-import com.example.shop.service.impl.CategoryServiceImpl;
-import com.example.shop.service.impl.ProductServiceImpl;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.log4j.Log4j2;
 import org.apache.commons.lang.RandomStringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.ActiveProfiles;
+import org.springframework.test.web.servlet.MockMvc;
 
 import java.math.BigDecimal;
 import java.util.concurrent.ThreadLocalRandom;
 
-@SpringBootTest(classes = {ProductServiceImpl.class, CategoryServiceImpl.class})
+@WebMvcTest(controllers = {ProductController.class, CategoryController.class})
 @Log4j2
 @ActiveProfiles("test")
-public abstract class BaseUnitTestForService {
+public abstract class BaseUnitTestForController {
 
     @Autowired
+    protected MockMvc mockMvc;
+
+    @MockBean
     protected ProductService productService;
 
-    @Autowired
+    @MockBean
     protected CategoryService categoryService;
 
-    @MockBean
-    protected ProductRepository productRepository;
+    @Autowired
+    protected ObjectMapper objectMapper;
 
-    @MockBean
-    protected CategoryRepository categoryRepository;
+    protected static final String BASE_PRODUCT_URL = "/api/v1/product";
+    protected static final String BASE_CATEGORY_URL = "/api/v1/category";
 
     protected Category createCategory(Long id) {
         String name = RandomStringUtils.randomAlphabetic(5);

@@ -1,4 +1,4 @@
-package com.example.demo.integration;
+package com.example.shop.integration;
 
 import com.example.shop.dto.ProductDto;
 import com.example.shop.entity.Category;

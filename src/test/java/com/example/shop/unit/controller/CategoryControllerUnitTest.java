@@ -1,4 +1,4 @@
-package com.example.demo.unit.controller;
+package com.example.shop.unit.controller;
 
 import com.example.shop.dto.CategoryDto;
 import lombok.extern.log4j.Log4j2;

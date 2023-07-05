@@ -1,42 +1,39 @@
-package com.example.demo.unit.controller;
+package com.example.shop.unit.service;
 
-import com.example.shop.controller.CategoryController;
-import com.example.shop.controller.ProductController;
 import com.example.shop.entity.Category;
 import com.example.shop.entity.Product;
+import com.example.shop.repository.CategoryRepository;
+import com.example.shop.repository.ProductRepository;
 import com.example.shop.service.CategoryService;
 import com.example.shop.service.ProductService;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import com.example.shop.service.impl.CategoryServiceImpl;
+import com.example.shop.service.impl.ProductServiceImpl;
 import lombok.extern.log4j.Log4j2;
 import org.apache.commons.lang.RandomStringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.ActiveProfiles;
-import org.springframework.test.web.servlet.MockMvc;
 
 import java.math.BigDecimal;
 import java.util.concurrent.ThreadLocalRandom;
 
-@WebMvcTest(controllers = {ProductController.class, CategoryController.class})
+@SpringBootTest(classes = {ProductServiceImpl.class, CategoryServiceImpl.class})
 @Log4j2
 @ActiveProfiles("test")
-public abstract class BaseUnitTestForController {
+public abstract class BaseUnitTestForService {
 
     @Autowired
-    protected MockMvc mockMvc;
-
-    @MockBean
     protected ProductService productService;
 
-    @MockBean
+    @Autowired
     protected CategoryService categoryService;
 
-    @Autowired
-    protected ObjectMapper objectMapper;
+    @MockBean
+    protected ProductRepository productRepository;
 
-    protected static final String BASE_PRODUCT_URL = "/api/v1/product";
-    protected static final String BASE_CATEGORY_URL = "/api/v1/category";
+    @MockBean
+    protected CategoryRepository categoryRepository;
 
     protected Category createCategory(Long id) {
         String name = RandomStringUtils.randomAlphabetic(5);

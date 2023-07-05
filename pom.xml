@@ -12,13 +12,13 @@
     </parent>
 
     <groupId>com.example</groupId>
-    <artifactId>demo</artifactId>
+    <artifactId>shop</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>demo</name>
+    <name>shop</name>
     <description>Demo project for Spring Boot</description>
 
     <properties>
-        <java.version>11</java.version>
+        <java.version>17</java.version>
     </properties>
 
     <dependencies>
@@ -105,6 +105,7 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-security</artifactId>
         </dependency>
+
     </dependencies>
 
     <build>
@@ -121,6 +122,13 @@
                     </excludes>
                 </configuration>
             </plugin>
+            <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-site-plugin</artifactId>
+            <version>3.3</version>
+            </plugin>
+
+
         </plugins>
     </build>
 
