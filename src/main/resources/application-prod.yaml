@@ -3,7 +3,7 @@ server:
 
 logging:
     level:
-        com.example.demo: debug
+        com.nlarin.shop: debug
     file:
         name: logs/prod.log
 
